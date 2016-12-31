@@ -58,8 +58,12 @@ public class Client {
     }
 
     public Account layTaiKhoan(int soTK) {
-        Account result = null;
-        return result;
+        for (Account acc : cacTaiKhoan) {
+            if (acc.getSoTK() == soTK) {
+                return acc;
+            }
+        }
+        return null;
     }
 
     public void inThongTinTaiKhoan() {
@@ -72,8 +76,7 @@ public class Client {
 
             if (acc instanceof SavingAccount) {
                 System.out.println(" Lai Suat : " + ((SavingAccount) acc).getLaiSuatNganHang());
-            }
-            else {
+            } else {
                 System.out.println("");
             }
         }
