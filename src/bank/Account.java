@@ -11,8 +11,8 @@ package bank;
  */
 public abstract class Account {
 
-    private int soDu;
-    private int soTK;
+    protected int soDu;
+    protected int soTK;
 
     public Account() {
         soDu = 0;
@@ -46,6 +46,10 @@ public abstract class Account {
     }
 
     public boolean rutTien(int money) {
+        if (this.soDu < money) {
+            return false;
+        }
+        this.soDu -= money;
         return true;
     }
 

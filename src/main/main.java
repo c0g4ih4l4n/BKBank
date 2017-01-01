@@ -23,7 +23,7 @@ public class main {
         SavingAccount acc = new SavingAccount(0.1f, 2000000, 10001221);
         newClient.themTaiKhoan(acc);
         
-        CheckingAccount acc1 = new CheckingAccount(10001221, 3000000, 10001222);
+        CheckingAccount acc1 = new CheckingAccount(acc, 3000000, 10001222);
         newClient.themTaiKhoan(acc1);
 
         newClient.inThongTinTaiKhoan();
