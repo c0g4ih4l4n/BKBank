@@ -10,22 +10,38 @@ package bank;
  * @author te
  */
 public class CheckingAccount extends Account {
-    
-    private int soTKLienKet;
 
-    public CheckingAccount(int soTKLienKet, int soDu, int soTK) {
+    private SavingAccount soTKLienKet;
+
+    public CheckingAccount(SavingAccount soTKLienKet, int soDu, int soTK) {
         super(soDu, soTK);
         this.soTKLienKet = soTKLienKet;
     }
 
-    public int getSoTKLienKet() {
+    public SavingAccount getSoTKLienKet() {
         return soTKLienKet;
     }
 
-    public void setSoTKLienKet(int soTKLienKet) {
+    public void setSoTKLienKet(SavingAccount soTKLienKet) {
         this.soTKLienKet = soTKLienKet;
     }
-    
-    
-    
+
+    @Override
+    public boolean rutTien(int money) {
+        if (this.soDu > money) {
+            super.rutTien(money);
+        } else {
+            if (this.soTKLienKet == null) {
+                return false;
+            } else if (this.soDu + this.soTKLienKet.getSoDu() < money) {
+                return false;
+            } else {
+                this.soTKLienKet.rutTien(money - this.soDu);
+                this.soDu = 0;
+                return true;
+            }
+        }
+        return true;
+    }
+
 }
